@@ -6,7 +6,7 @@ spring:
       bootstrap-servers: localhost:19092
       integer-serializer: org.apache.kafka.common.serialization.IntegerSerializer
       string-serializer: org.apache.kafka.common.serialization.StringSerializer
-      json-serializer: org.springframework.kafka.support.serializer.JsonSerializer;
+      json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 
 
