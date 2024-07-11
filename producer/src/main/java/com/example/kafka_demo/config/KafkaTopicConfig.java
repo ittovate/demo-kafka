@@ -16,4 +16,12 @@ public class KafkaTopicConfig {
                 .replicas(1)
                 .build();
     }
+    @Bean
+    public NewTopic personTopic(){
+        return TopicBuilder
+                .name(KafkaUtils.personTopic)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
 }
