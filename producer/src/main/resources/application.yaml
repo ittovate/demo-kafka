@@ -1,0 +1,14 @@
+spring:
+  application:
+    name:
+      kafka-demo
+  kafka:
+      bootstrap-servers: localhost:19092
+      integer-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      string-serializer: org.apache.kafka.common.serialization.StringSerializer
+      json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+
+server:
+  port: 2222

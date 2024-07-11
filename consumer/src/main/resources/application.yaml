@@ -1,0 +1,11 @@
+spring:
+  application:
+    name:
+      kafka-demo
+  kafka:
+      bootstrap-servers: localhost:19092
+      integer-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      string-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      json-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      consumer-group-id: notifications-consumer-group
+      default-topic: demo-topic
