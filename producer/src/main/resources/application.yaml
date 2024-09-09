@@ -1,14 +1,18 @@
-spring:
-  application:
-    name:
-      kafka-demo
-  kafka:
-      bootstrap-servers: localhost:19092
-      integer-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      string-serializer: org.apache.kafka.common.serialization.StringSerializer
-      json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-
-
 server:
-  port: 2222
+  port: 8181
+spring:
+  kafka:
+    bootstrap-servers: "localhost:19092"
+    integer-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+    string-serializer: org.apache.kafka.common.serialization.StringSerializer
+    json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    producer:
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        schema.registry.url: "http://localhost:8081"
+
+
+
+

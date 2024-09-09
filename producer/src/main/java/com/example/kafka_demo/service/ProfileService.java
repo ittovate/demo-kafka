@@ -1,3 +1,4 @@
+/*
 package com.example.kafka_demo.service;
 
 import com.example.kafka_demo.model.Person;
@@ -44,3 +45,4 @@ public class ProfileService implements KafkaMessageServiceSync, KafkaMessageServ
         logger.info("Person details sent successfully!");
     }
 }
+*/
