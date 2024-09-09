@@ -90,7 +90,7 @@
 							<goal>schema</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>${project.basedir}/src/main/resources/Avro/Order.avsc</sourceDirectory>
+							<sourceDirectory>${project.basedir}/src/main/resources/Avro</sourceDirectory>
 							<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
 						</configuration>
 					</execution>

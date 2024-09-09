@@ -6,12 +6,12 @@ spring:
     integer-serializer: org.apache.kafka.common.serialization.IntegerSerializer
     string-serializer: org.apache.kafka.common.serialization.StringSerializer
     json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-    producer:
-      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
-      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
-      properties:
-        schema.registry.url: "http://localhost:8081"
+    avro-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    properties:
+      schema:
+        registry:
+          url:
+            "localhost:8081"
 
 
 
