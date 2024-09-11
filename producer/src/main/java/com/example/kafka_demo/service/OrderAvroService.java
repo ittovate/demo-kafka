@@ -22,11 +22,11 @@ public class OrderAvroService implements KafkaMessageServiceSync{
 
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
-        System.out.println("Check 3 service  ");
         logger.info("Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
-        System.out.println("Check 4 service  ");
         kafkaTemplate.send(KafkaUtils.demoTopic,(Order) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000);
-        System.out.println("Check 5 service  ");//Simulating sync behaviour
+
     }
+
+
 }

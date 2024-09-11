@@ -1,8 +1,6 @@
 package com.example.kafka_demo.service;
 
-import com.example.kafka_demo.model.Person;
 import com.example.kafka_demo.util.KafkaUtils;
-import org.apache.kafka.common.protocol.types.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -29,20 +27,18 @@ public class OrderService implements KafkaMessageServiceSync,KafkaMessageService
 
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
-        System.out.println("Check 3 service  ");
+
         logger.info("Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
-        System.out.println("Check 4 service  ");
+
         kafkaTemplate.send(KafkaUtils.demoTopic,(String) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000);
-        System.out.println("Check 5 service  ");//Simulating sync behaviour
+
     }
 
     public void makeOrderSync(String email){
         try{
-            System.out.println("Check 1 service  ");
             sendKafkaEventSync(email);
         }catch (ExecutionException | InterruptedException | TimeoutException exception){
-            System.out.println("Check 2 service  ");
             logger.error("Error when sending synchronous to Kafka");
             logger.error(exception.getMessage());
         }

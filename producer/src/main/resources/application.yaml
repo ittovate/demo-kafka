@@ -7,11 +7,7 @@ spring:
     string-serializer: org.apache.kafka.common.serialization.StringSerializer
     json-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     avro-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-    properties:
-      schema:
-        registry:
-          url:
-            "localhost:8081"
+    schema-registry-url : "http://localhost:8081"
 
 
 

@@ -1,10 +1,11 @@
-/*
+
 package com.example.kafka_demo.service;
 
 import com.example.kafka_demo.model.Person;
 import com.example.kafka_demo.util.KafkaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,16 @@ import java.util.concurrent.TimeoutException;
 @Service
 public class ProfileService implements KafkaMessageServiceSync, KafkaMessageServiceAsync{
     private final KafkaTemplate<Integer, Person> kafkaTemplate;
+
+
+
     private final Logger logger = LoggerFactory.getLogger(ProfileService.class);
-    public ProfileService(KafkaTemplate<Integer, Person> kafkaTemplate) {
+
+
+     @Autowired
+    public ProfileService(KafkaTemplate<Integer, Person> kafkaTemplate ) {
         this.kafkaTemplate = kafkaTemplate;
+
     }
 
     @Override
@@ -32,6 +40,7 @@ public class ProfileService implements KafkaMessageServiceSync, KafkaMessageServ
         kafkaTemplate.send(KafkaUtils.personTopic,(Person) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000); //Simulating sync behaviour
     }
+
     public void sendPersonDetailsSync(Person person){
         try{
             sendKafkaEventSync(person);
@@ -40,9 +49,13 @@ public class ProfileService implements KafkaMessageServiceSync, KafkaMessageServ
             logger.error(exception.getMessage());
         }
     }
+
+
     public void sendPersonDetailsAsync(Person person){
         sendKafkaEventAsync(person);
         logger.info("Person details sent successfully!");
     }
+
+
 }
-*/
+
