@@ -1,5 +1,5 @@
 {
-  "name": "git ",
+  "name": "Order",
   "type": "record",
   "namespace": "com.example.kafka_demo.model.generated",  // Optional but recommended
   "fields": [
