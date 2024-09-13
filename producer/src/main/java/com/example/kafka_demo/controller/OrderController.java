@@ -30,9 +30,7 @@ public class OrderController {
     }
     @GetMapping("/sync/{customerEmail}")
     public ResponseEntity<APIResponse<String>> makeOrderSync(@PathVariable String customerEmail) {
-        System.out.println("Check 1 Controller ");
         orderService.makeOrderSync(customerEmail);
-        System.out.println("Check 2 Controller ");
         APIResponse<String> apiResponse = APIResponse.success(null,
                 "Order to " + customerEmail + " sent successfully!");
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
