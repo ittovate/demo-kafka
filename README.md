@@ -94,4 +94,37 @@ Request Body :
 - Sends an asynchronous message with a JSON payload.
 - Replace the example data with actual values.
 
+### - Avro Message
+
+#### Synchronous Profile Message
+```
+POST http://localhost:8181/avro/profiles/sync
+Content-Type: application/json
+
+Request Body:
+{
+  "name":  ,
+  "age": 
+}
+```
+
+- Sends a synchronous message using Avro serialization with a schema registry.
+- The message contains profile information.
+
+  #### Synchronous Customer Email Message
+  ```
+  POST http://localhost:8181/avro/sync
+  Content-Type: application/json
+
+  Request Body:
+  {
+  "customerEmail":  
+  }
+  ```
+
+  - Sends a synchronous message using Avro serialization with a schema registry.
+  - The message contains customer email information.
+
+
+
 
