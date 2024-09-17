@@ -21,7 +21,11 @@
 
 ### Then you can start the containers in the docker-compose file on the command line by writing 
 ``docker-compose up -d``
-### This should be the output ![successful-compose-network-image](readme-images/successful-compose-network.png) or if you are using Docker Desktop on Windows it should have a similar output by saying both created successfully
+### This should be the output
+
+![Screenshot from 2024-09-17 18-46-44](https://github.com/user-attachments/assets/a38e0b28-ff90-47b6-9c43-f5c42db2ff8f)
+
+ or if you are using Docker Desktop on Windows it should have a similar output by saying both created successfully
 
 # How to run
 ### There are two seperate projects ``producer`` and ``consumer``
@@ -32,11 +36,10 @@
 
 ### Now you can run using ``java -jar kafka-demo-0.0.1-SNAPSHOT.jar`` .. NOTE this name can be changed as you like inside the ``pom.xml`` using ``artifact`` and ``version`` tags
 
-# How to use
-### Currently there are endpoints for producing both Sync and Async messages both Strings and Person object (as JSON) in the ``producer`` 
+
 # Kafka Producer Service
 
-This service provides endpoints for producing both synchronous and asynchronous messages, handling both String and JSON (Person object) payloads.
+### Currently there are endpoints for producing both Sync and Async messages, handling both Strings and JSON in the producer. Additionally, we use Avro with a schema registry for serialization and deserialization of messages.
 
 ## Endpoints
 
@@ -44,7 +47,7 @@ This service provides endpoints for producing both synchronous and asynchronous 
 
 #### Synchronous Message
 ``` 
-GET http://localhost:2222/sync/{{customerEmail}}
+GET   http://localhost:8181/orders/sync/{customerEmail}
 ```
 - Sends a synchronous message.
 - Includes a dummy 5-second Thread.Sleep to simulate latency.
@@ -53,11 +56,11 @@ GET http://localhost:2222/sync/{{customerEmail}}
 #### Asynchronous Message
 
 ```
-GET http://localhost:2222/async/{{customerEmail}}
+GET   http://localhost:8181/orders/async/{customerEmail}
 ```
 
 - Sends an asynchronous message.
-- Replace {{customerEmail}} with any dummy email address.
+- Replace `{customerEmail}` with any dummy email address.
 
 ### - JSON Message
 
