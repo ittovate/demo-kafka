@@ -21,16 +21,16 @@ public class OrderService implements KafkaMessageServiceSync,KafkaMessageService
 
     @Override
     public void sendKafkaEventAsync(Object value){
-        logger.info("Sending asynchronous to kafka topic {" + KafkaUtils.demoTopic + " }");
-        kafkaTemplate.send(KafkaUtils.demoTopic,(String)value);
+        logger.info("Sending asynchronous to kafka topic {" + KafkaUtils.StringTopic + " }");
+        kafkaTemplate.send(KafkaUtils.StringTopic,(String)value);
     }
 
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
 
-        logger.info("Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
+        logger.info("Sending synchronous to kafka topic {" + KafkaUtils.StringTopic + "}");
 
-        kafkaTemplate.send(KafkaUtils.demoTopic,(String) value).get(10, TimeUnit.SECONDS);
+        kafkaTemplate.send(KafkaUtils.StringTopic ,(String) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000);
 
     }
