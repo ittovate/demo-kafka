@@ -1,5 +1,7 @@
 package com.example.kafka_demo.service;
 
+import com.example.kafka_demo.model.Person;
+import com.example.kafka_demo.model.generated.Order;
 import com.example.kafka_demo.model.generated.PersonAvro;
 import com.example.kafka_demo.util.KafkaUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -20,42 +22,66 @@ public class NotificationService {
 
     private LocalDateTime currentTime;
 
-    private KafkaUtils kafkaUtils;  // Inject KafkaUtils
-
+    private KafkaUtils kafkaUtils;
 
     @Autowired
     public NotificationService(KafkaUtils kafkaUtils) {
         this.kafkaUtils = kafkaUtils;
     }
 
-    @KafkaListener(topics =  "#{kafkaUtils.personTopic}" ,
-                   groupId = "#{kafkaUtils.groupId}",
-                  containerFactory = "personAvroKafkaListenerContainerFactory"
-                         )
-    public void read(ConsumerRecord<String, PersonAvro> consumerRecord) {
-        String key = consumerRecord.key();
-        PersonAvro person = consumerRecord.value();
+    @KafkaListener(topics = "#{kafkaUtils.personTopic}",
+            groupId = "#{kafkaUtils.groupId}",
+            containerFactory = "personAvroKafkaListenerContainerFactory",
+            properties = "auto.offset.reset:earliest"
+    )
+    void read(ConsumerRecord<String, PersonAvro> consumerRecord) {
 
-            currentTime = LocalDateTime.now();
+        currentTime = LocalDateTime.now();
 
-        logger.info("Avro message received for key : " + key + " value : " + person.toString()
-                     +  " which was produced at " + currentTime ) ;
+        logger.info("Avro message received - Topic: {}, Value: {}, Produced at: {}",
+                consumerRecord.topic(), consumerRecord.value(), currentTime);
+    }
+
+
+    @KafkaListener(topics = "#{kafkaUtils.demoTopic}",
+            groupId = "#{kafkaUtils.groupId}",
+            containerFactory = "orderAvroKafkaListenerContainerFactory",
+            properties = "auto.offset.reset:earliest")
+    void consume(ConsumerRecord<String, Order> event) {
+
+        currentTime = LocalDateTime.now();
+
+        logger.info("Avro message received - Topic: {}, Value: {}, Produced at: {}",
+                event.topic(), event.value(), currentTime);
+    }
+
+
+    @KafkaListener(topics = "#{kafkaUtils.StringTopic}",
+            groupId = "#{kafkaUtils.groupId}",
+            containerFactory = "stringKafkaListenerContainerFactory",
+            properties = "auto.offset.reset:earliest"
+    )
+    public void consumeStringPerson(ConsumerRecord<String, String> consumerRecord) {
+
+        currentTime = LocalDateTime.now();
+
+        logger.info("String message received - Topic: {}, Value: {}, Produced at: {}",
+                consumerRecord.topic(), consumerRecord.value(), currentTime);
 
     }
 
 
-
-
-    @KafkaListener(topics =  "#{kafkaUtils.demoTopic}" ,
-                   groupId = "#{kafkaUtils.groupId}" ,
-                   containerFactory = "orderAvroKafkaListenerContainerFactory",
-                   properties = "auto.offset.reset:earliest")
-    void consume(ConsumerRecord<String , PersonAvro> event){
+    @KafkaListener(topics = "#{kafkaUtils.JsonTopic}",
+            groupId = "#{kafkaUtils.groupId}",
+            containerFactory = "jsonKafkaListenerContainerFactory",
+            properties = "auto.offset.reset:earliest"
+    )
+    public void consumeJsonPerson(ConsumerRecord<String, Person> consumerRecord) {
 
         currentTime = LocalDateTime.now();
 
-        logger.info("Consumed event and sending notification to  "
-                + event.value() + " which was produced at " + currentTime );
+        logger.info("JSON message received - Topic: {}, Value: {}, Produced at: {}",
+                consumerRecord.topic(), consumerRecord.value(), currentTime);
 
     }
 

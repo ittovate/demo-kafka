@@ -24,4 +24,20 @@ public class KafkaTopicConfig {
                 .replicas(1)
                 .build();
     }
+    @Bean
+    public NewTopic StringTopic(){
+        return TopicBuilder
+                .name(KafkaUtils.StringTopic)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    public NewTopic jsonTopic(){
+        return TopicBuilder
+                .name(KafkaUtils.JsonTopic)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
 }

@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: kafka-demo
@@ -11,11 +12,13 @@ spring:
       specific-avro-reader: "true"
       consumer-group-id: notifications-consumer-group
       Value-Avro-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
       topic :
         default-topic : demo-topic
         person-topic : person-topic
-
-
+        String-topic : string-topic
+        Json-topic : json-topic
 
 
 

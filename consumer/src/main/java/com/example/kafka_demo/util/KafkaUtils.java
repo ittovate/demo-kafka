@@ -15,6 +15,21 @@ public class KafkaUtils {
     @Value("${spring.kafka.topic.person-topic}")
     private   String  personTopic ;
 
+    @Value("${spring.kafka.topic.String-topic}")
+    private String  StringTopic ;
+
+
+    @Value("${spring.kafka.topic.Json-topic}")
+    private String  JsonTopic ;
+
+    public String getJsonTopic() {
+        return JsonTopic;
+    }
+
+    public String getStringTopic() {
+        return StringTopic;
+    }
+
     public  String getDemoTopic() {
         return demoTopic;
     }
