@@ -98,7 +98,7 @@ Request Body :
 
 #### Synchronous Profile Message
 ```
-POST http://localhost:8181/avro/profiles/sync
+POST http://localhost:8181/profiles/avro/profile/sync
 Content-Type: application/json
 
 Request Body:
@@ -113,7 +113,7 @@ Request Body:
 
   #### Synchronous Customer Email Message
   ```
-  POST http://localhost:8181/avro/sync
+  POST http://localhost:8181/orders/avro/sync
   Content-Type: application/json
 
   Request Body:
