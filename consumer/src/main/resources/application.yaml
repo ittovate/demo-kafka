@@ -1,11 +1,24 @@
+
 spring:
   application:
-    name:
-      kafka-demo
-  kafka:
-      bootstrap-servers: localhost:19092
+    name: kafka-demo
+  kafka :
+      bootstrap-servers : "127.0.0.1:19092"
       integer-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
       string-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       json-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      autoOffsetReset: earliest
+      schema-registry-url: "http://localhost:8081"
+      specific-avro-reader: "true"
       consumer-group-id: notifications-consumer-group
-      default-topic: demo-topic
+      Value-Avro-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+      topic :
+        default-topic : demo-topic
+        person-topic : person-topic
+        String-topic : string-topic
+        Json-topic : json-topic
+
+
+

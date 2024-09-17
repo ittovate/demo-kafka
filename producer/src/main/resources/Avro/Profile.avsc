@@ -1,0 +1,15 @@
+{
+  "name": "PersonAvro",
+  "type": "record",
+  "namespace": "com.example.kafka_demo.model.generated",  // Optional but recommended
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    } ,
+    {
+          "name": "age",
+          "type": "int"
+    }
+  ]
+}

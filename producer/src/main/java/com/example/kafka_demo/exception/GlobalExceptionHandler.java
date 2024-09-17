@@ -15,7 +15,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<APIResponse<String>> defaultError(Exception exception){
         logger.error(exception.getMessage());
+        exception.printStackTrace();
         APIResponse<String> apiResponse = APIResponse.defaultError(exception.getMessage());
-        return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<  >(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
