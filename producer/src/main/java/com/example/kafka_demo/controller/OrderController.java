@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 @RestController
+@RequestMapping("/orders")
 public class OrderController {
     private final OrderService orderService;
     private final OrderAvroService orderAvroService;
@@ -20,14 +21,27 @@ public class OrderController {
         this.orderService = orderService;
         this.orderAvroService = orderAvroService;
     }
+
+    /**
+     * synchronously sends order details in AVRO format.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @PostMapping("/avro/sync")
     public ResponseEntity<APIResponse<String>> makeOrderSync(@RequestBody Order order)
             throws ExecutionException, InterruptedException, TimeoutException {
         orderAvroService.sendKafkaEventSync(order);
+
         APIResponse<String> apiResponse = APIResponse.success(null,
                 "Order to " + order + " sent successfully!");
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
+
+    /**
+     * synchronously sends profile details in String format.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @GetMapping("/sync/{customerEmail}")
     public ResponseEntity<APIResponse<String>> makeOrderSync(@PathVariable String customerEmail) {
         orderService.makeOrderSync(customerEmail);
@@ -35,12 +49,18 @@ public class OrderController {
                 "Order to " + customerEmail + " sent successfully!");
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
+
+    /**
+     * Asynchronously sends profile details in String format.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @GetMapping("/async/{customerEmail}")
-    public APIResponse<String> makeOrderAsync(@PathVariable String customerEmail) {
+    public ResponseEntity<APIResponse<String> >  makeOrderAsync(@PathVariable String customerEmail) {
         orderService.makeOrderAsync(customerEmail);
-        return APIResponse
-                .success(null,
-                        "Order to " + customerEmail + " sent successfully!");
+        APIResponse<String> apiResponse = APIResponse.success(null,
+                "Order to " + customerEmail + " sent successfully!");
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
 }

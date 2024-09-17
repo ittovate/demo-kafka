@@ -9,9 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/profiles")
 public class ProfileController {
 
     private final ProfileService profileService;
@@ -22,6 +24,11 @@ public class ProfileController {
         this.profileAvroService = profileAvroService;
     }
 
+    /**
+     * Synchronously sends profile details in JSON format.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @PostMapping("/sync")
     public ResponseEntity<APIResponse<String>> sendProfileDetailsSync(@RequestBody Person person){
         profileService.sendPersonDetailsSync(person);
@@ -30,6 +37,12 @@ public class ProfileController {
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
+
+    /**
+     * Synchronously sends profile details using Avro.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @PostMapping("/avro/profile/sync")
     public ResponseEntity<APIResponse<String>> sendProfileDetailsAvroSync(@RequestBody PersonAvro person){
         profileAvroService.sendProfileDetailsAvroSync(person);
@@ -38,7 +51,11 @@ public class ProfileController {
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
-
+    /**
+     * Asynchronously sends profile details in JSON format.
+     *
+     * @return ResponseEntity with APIResponse and status
+     */
     @PostMapping("/async")
     public ResponseEntity<APIResponse<String>> sendProfileDetailsAsync(@RequestBody Person person){
         profileService.sendPersonDetailsAsync(person);

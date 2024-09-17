@@ -22,9 +22,9 @@ public class OrderAvroService implements KafkaMessageServiceSync{
 
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
-        logger.info("Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
         kafkaTemplate.send(KafkaUtils.demoTopic,(Order) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000);
+        logger.info("Synchronous Avro order sent successfully " );
 
     }
 

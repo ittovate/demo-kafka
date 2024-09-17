@@ -30,15 +30,16 @@ public class ProfileService implements KafkaMessageServiceSync, KafkaMessageServ
 
     @Override
     public void sendKafkaEventAsync(Object value) {
-        logger.info("Sending asynchronous to kafka topic {" + KafkaUtils.demoTopic + " }");
-        kafkaTemplate.send(KafkaUtils.personTopic,(Person) value);
+        logger.info("Sending asynchronous to kafka topic {" + KafkaUtils.JsonTopic + " }");
+        kafkaTemplate.send(KafkaUtils.JsonTopic,(Person) value);
     }
 
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
-        logger.info("Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
-        kafkaTemplate.send(KafkaUtils.personTopic,(Person) value).get(10, TimeUnit.SECONDS);
+        kafkaTemplate.send(KafkaUtils.JsonTopic,(Person) value).get(10, TimeUnit.SECONDS);
         Thread.sleep(5000); //Simulating sync behaviour
+        logger.info("Sending synchronous to kafka topic {" + KafkaUtils.JsonTopic + "}");
+
     }
 
     public void sendPersonDetailsSync(Person person){

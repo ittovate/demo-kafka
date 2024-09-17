@@ -24,9 +24,8 @@ public class ProfileAvroService implements KafkaMessageServiceSync{
     @Override
     public void sendKafkaEventSync(Object value) throws ExecutionException, InterruptedException, TimeoutException {
 
-        logger.info("avro Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
         kafkaTemplate.send(KafkaUtils.personTopic,(PersonAvro) value).get(10, TimeUnit.SECONDS);
-        logger.info("avro Sending synchronous to kafka topic {" + KafkaUtils.demoTopic + "}");
+        logger.info("avro Sending synchronous to kafka topic {" + KafkaUtils.personTopic + "}");
 
         Thread.sleep(5000); //Simulating sync behaviour
     }
