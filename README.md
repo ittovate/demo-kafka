@@ -66,7 +66,7 @@ GET   http://localhost:8181/orders/async/{customerEmail}
 
 #### Synchronous Message
 ``` 
-POST http://localhost:2222/sync
+POST http://localhost:8181/profiles/sync
 Content-Type: application/json
 
 Request Body :
@@ -81,7 +81,7 @@ Request Body :
 #### Asynchronous Message
 
 ```
-POST http://localhost:2222/async
+POST http://localhost:8181/profiles/async
 Content-Type: application/json
 
 Request Body : 
