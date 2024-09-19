@@ -5,11 +5,16 @@
   "fields": [
     {
       "name": "name",
-      "type": "string"
+      "type": ["null", "string"],
+      "default": null
     } ,
     {
-          "name": "age",
-          "type": "int"
+      "name": "age",
+      "type": ["null", "int"],
+      "default": null
     }
   ]
 }
+
+
+

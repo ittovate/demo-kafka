@@ -4,8 +4,9 @@
   "namespace": "com.example.kafka_demo.model.generated",  // Optional but recommended
   "fields": [
     {
-      "name": "customerEmail",
-      "type": "string"
+       "name": "customerEmail",
+            "type": ["null", "string"],
+            "default": null
     }
   ]
 }

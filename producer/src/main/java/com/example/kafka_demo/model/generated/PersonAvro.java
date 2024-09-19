@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class PersonAvro extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6190834967351855235L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PersonAvro\",\"namespace\":\"com.example.kafka_demo.model.generated\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\"}]}");
+  private static final long serialVersionUID = -3605281941689467784L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PersonAvro\",\"namespace\":\"com.example.kafka_demo.model.generated\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"age\",\"type\":[\"null\",\"int\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class PersonAvro extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @Deprecated public java.lang.CharSequence name;
-  @Deprecated public int age;
+  @Deprecated public java.lang.Integer age;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -156,7 +156,7 @@ public class PersonAvro extends org.apache.avro.specific.SpecificRecordBase impl
     implements org.apache.avro.data.RecordBuilder<PersonAvro> {
 
     private java.lang.CharSequence name;
-    private int age;
+    private java.lang.Integer age;
 
     /** Creates a new Builder */
     private Builder() {
@@ -247,7 +247,7 @@ public class PersonAvro extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'age'.
       * @return This builder.
       */
-    public com.example.kafka_demo.model.generated.PersonAvro.Builder setAge(int value) {
+    public com.example.kafka_demo.model.generated.PersonAvro.Builder setAge(java.lang.Integer value) {
       validate(fields()[1], value);
       this.age = value;
       fieldSetFlags()[1] = true;
@@ -268,6 +268,7 @@ public class PersonAvro extends org.apache.avro.specific.SpecificRecordBase impl
       * @return This builder.
       */
     public com.example.kafka_demo.model.generated.PersonAvro.Builder clearAge() {
+      age = null;
       fieldSetFlags()[1] = false;
       return this;
     }
