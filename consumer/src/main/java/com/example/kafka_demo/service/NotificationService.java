@@ -20,7 +20,7 @@ public class NotificationService {
     private static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
 
 
-    private LocalDateTime currentTime;
+    public LocalDateTime currentTime;
 
     private KafkaUtils kafkaUtils;
 
@@ -34,7 +34,7 @@ public class NotificationService {
             containerFactory = "personAvroKafkaListenerContainerFactory",
             properties = "auto.offset.reset:earliest"
     )
-    void read(ConsumerRecord<String, PersonAvro> consumerRecord) {
+    public void read(ConsumerRecord<String, PersonAvro> consumerRecord) {
 
         currentTime = LocalDateTime.now();
 
@@ -47,11 +47,11 @@ public class NotificationService {
             groupId = "#{kafkaUtils.groupId}",
             containerFactory = "orderAvroKafkaListenerContainerFactory",
             properties = "auto.offset.reset:earliest")
-    void consume(ConsumerRecord<String, Order> event) {
+    public void consume(ConsumerRecord<String, Order> event) {
 
         currentTime = LocalDateTime.now();
 
-        logger.info("Avro message received - Topic: {}, Value: {}, Produced at: {}",
+        logger.info("Avro message  received - Topic: {}, Value: {}, Produced at: {}",
                 event.topic(), event.value(), currentTime);
     }
 
