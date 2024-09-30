@@ -19,10 +19,9 @@ import java.time.LocalDateTime;
 public class NotificationService {
     private static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
 
+    private LocalDateTime currentTime;
 
-    public LocalDateTime currentTime;
-
-    private KafkaUtils kafkaUtils;
+    private final KafkaUtils kafkaUtils;
 
     @Autowired
     public NotificationService(KafkaUtils kafkaUtils) {

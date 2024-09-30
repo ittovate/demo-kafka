@@ -22,9 +22,6 @@ public class KafkaConsumerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
-
-    @Value("${spring.kafka.integer-deserializer}")
-    private String integerDeserializer;
     @Value("${spring.kafka.string-deserializer}")
     private String stringDeserializer;
 
@@ -44,11 +41,7 @@ public class KafkaConsumerConfig {
     private String autoOffsetReset;
 
     @Value("${spring.kafka.Value-Avro-Deserializer}")
-    private String ValueAvroDeserializer;
-
-
-    @Value("${spring.kafka.value-deserializer}")
-    private String JsonDeserializer;
+    private String valueAvroDeserializer;
 
 
     @Bean
@@ -75,7 +68,7 @@ public class KafkaConsumerConfig {
         consumerProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, specificAvroReader);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, stringDeserializer);
-        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ValueAvroDeserializer);
+        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, valueAvroDeserializer);
 
 
         return new DefaultKafkaConsumerFactory<>(consumerProperties);
