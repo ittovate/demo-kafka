@@ -47,7 +47,7 @@
 
 #### Synchronous Message
 ``` 
-GET   http://localhost:8181/orders/sync/{customerEmail}
+GET   http://localhost:8181/api/v1/orders/sync/{customerEmail}
 ```
 - Sends a synchronous message.
 - Includes a dummy 5-second Thread.Sleep to simulate latency.
@@ -56,7 +56,7 @@ GET   http://localhost:8181/orders/sync/{customerEmail}
 #### Asynchronous Message
 
 ```
-GET   http://localhost:8181/orders/async/{customerEmail}
+GET   http://localhost:8181/api/v1/orders/async/{customerEmail}
 ```
 
 - Sends an asynchronous message.
@@ -66,7 +66,7 @@ GET   http://localhost:8181/orders/async/{customerEmail}
 
 #### Synchronous Message
 ``` 
-POST http://localhost:8181/profiles/sync
+POST http://localhost:8181/api/v1/profiles/sync
 Content-Type: application/json
 
 Request Body :
@@ -81,7 +81,7 @@ Request Body :
 #### Asynchronous Message
 
 ```
-POST http://localhost:8181/profiles/async
+POST http://localhost:8181/api/v1/profiles/async
 Content-Type: application/json
 
 Request Body : 
@@ -98,7 +98,7 @@ Request Body :
 
 #### Synchronous Profile Message
 ```
-POST http://localhost:8181/profiles/avro/profile/sync
+POST http://localhost:8181/api/v1/profiles/sync/avro
 Content-Type: application/json
 
 Request Body:
@@ -113,7 +113,7 @@ Request Body:
 
   #### Synchronous Customer Email Message
   ```
-  POST http://localhost:8181/orders/avro/sync
+  POST http://localhost:8181/api/v1/orders/sync/avro
   Content-Type: application/json
 
   Request Body:
