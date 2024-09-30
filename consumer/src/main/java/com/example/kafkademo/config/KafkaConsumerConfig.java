@@ -127,8 +127,6 @@ public class KafkaConsumerConfig {
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, stringDeserializer);
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, jsonDeserializer);
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
-        consumerProperties.put("spring.json.trusted.packages", "com.example.kafka_demo.model");
-        consumerProperties.put("spring.json.value.default.type", "com.example.kafka_demo.model.Person");
         return consumerProperties;
     }
 
