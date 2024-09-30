@@ -1,7 +1,7 @@
 {
   "name": "PersonAvro",
   "type": "record",
-  "namespace": "com.example.kafka_demo.model.generated",  // Optional but recommended
+  "namespace": "com.example.kafkademo.model.generated",  // Optional but recommended
   "fields": [
     {
       "name": "name",
