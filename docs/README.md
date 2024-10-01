@@ -152,7 +152,3 @@ The Producer application exposes endpoints for producing both synchronous and as
      ```
 
      - Sends a synchronous message using Avro serialization with a schema registry.
-
----
-
-This refactored version ensures clarity, improves formatting, and corrects minor typos and grammar. Let me know if you'd like further adjustments!
