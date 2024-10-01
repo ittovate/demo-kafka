@@ -5,39 +5,39 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class KafkaUtils {
-   @Value("${spring.kafka.topic.default-topic}")
-   private  String demoTopic;
+    @Value("${spring.kafka.topic.default-topic}")
+    private String demoTopic;
 
     @Value("${spring.kafka.consumer-group-id}")
-    private  String groupId;
+    private String groupId;
 
     @Value("${spring.kafka.topic.person-topic}")
-    private   String  personTopic ;
+    private String personTopic;
 
     @Value("${spring.kafka.topic.String-topic}")
-    private String  StringTopic ;
+    private String stringTopic;
 
 
     @Value("${spring.kafka.topic.Json-topic}")
-    private String  JsonTopic ;
+    private String jsonTopic;
 
     public String getJsonTopic() {
-        return JsonTopic;
+        return jsonTopic;
     }
 
     public String getStringTopic() {
-        return StringTopic;
+        return stringTopic;
     }
 
-    public  String getDemoTopic() {
+    public String getDemoTopic() {
         return demoTopic;
     }
 
-    public  String getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public  String getPersonTopic() {
+    public String getPersonTopic() {
         return personTopic;
     }
 }

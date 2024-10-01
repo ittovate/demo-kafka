@@ -1,4 +1,7 @@
 package com.example.kafkademo.model;
 
-public record Person(String name,Integer age) {
+/**
+ * The type Person.
+ */
+public record Person(String name, Integer age) {
 }

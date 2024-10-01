@@ -1,4 +1,4 @@
 package com.example.kafkademo.model;
 
-public record Person(String name,Integer age) {
+public record Person(String name, Integer age) {
 }

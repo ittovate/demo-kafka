@@ -23,11 +23,21 @@ public class NotificationService {
 
     private final KafkaUtils kafkaUtils;
 
+    /**
+     * Instantiates a new Notification service.
+     *
+     * @param kafkaUtils the kafka utils
+     */
     @Autowired
     public NotificationService(KafkaUtils kafkaUtils) {
         this.kafkaUtils = kafkaUtils;
     }
 
+    /**
+     * Read.
+     *
+     * @param consumerRecord the consumer record
+     */
     @KafkaListener(topics = "#{kafkaUtils.personTopic}",
             groupId = "#{kafkaUtils.groupId}",
             containerFactory = "personAvroKafkaListenerContainerFactory",
@@ -42,6 +52,11 @@ public class NotificationService {
     }
 
 
+    /**
+     * Consume.
+     *
+     * @param event the event
+     */
     @KafkaListener(topics = "#{kafkaUtils.demoTopic}",
             groupId = "#{kafkaUtils.groupId}",
             containerFactory = "orderAvroKafkaListenerContainerFactory",
@@ -55,6 +70,11 @@ public class NotificationService {
     }
 
 
+    /**
+     * Consume string person.
+     *
+     * @param consumerRecord the consumer record
+     */
     @KafkaListener(topics = "#{kafkaUtils.StringTopic}",
             groupId = "#{kafkaUtils.groupId}",
             containerFactory = "stringKafkaListenerContainerFactory",
@@ -70,6 +90,11 @@ public class NotificationService {
     }
 
 
+    /**
+     * Consume json person.
+     *
+     * @param consumerRecord the consumer record
+     */
     @KafkaListener(topics = "#{kafkaUtils.JsonTopic}",
             groupId = "#{kafkaUtils.groupId}",
             containerFactory = "jsonKafkaListenerContainerFactory",

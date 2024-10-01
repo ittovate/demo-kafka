@@ -1,6 +1,11 @@
 package com.example.kafkademo.util;
 
-public final class ResponseUtil {
+import static com.example.kafkademo.constant.ExceptionConstant.UTILITY_CLASS_INSTANTIATION_MESSAGE;
+
+/**
+ * The type Response util.
+ */
+public final class APIResponseUtil {
     /**
      * Creates a unified API response with the given status code, message, and response body.
      * <p>
@@ -19,6 +24,7 @@ public final class ResponseUtil {
         return new APIResponse<>(statusCode, message, body);
     }
 
-    private ResponseUtil(){
+    private APIResponseUtil() {
+        throw new IllegalStateException(UTILITY_CLASS_INSTANTIATION_MESSAGE);
     }
 }

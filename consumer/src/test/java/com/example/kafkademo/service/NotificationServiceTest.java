@@ -1,9 +1,8 @@
-package com.example.kafkademo;
+package com.example.kafkademo.service;
 
 import com.example.kafkademo.model.Person;
 import com.example.kafkademo.model.generated.Order;
 import com.example.kafkademo.model.generated.PersonAvro;
-import com.example.kafkademo.service.NotificationService;
 import com.example.kafkademo.util.KafkaUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.junit.jupiter.api.BeforeEach;

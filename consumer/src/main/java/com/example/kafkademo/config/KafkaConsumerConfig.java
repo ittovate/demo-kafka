@@ -1,6 +1,5 @@
 package com.example.kafkademo.config;
 
-
 import com.example.kafkademo.model.generated.Order;
 import com.example.kafkademo.model.generated.PersonAvro;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
@@ -44,6 +43,11 @@ public class KafkaConsumerConfig {
     private String valueAvroDeserializer;
 
 
+    /**
+     * Person avro kafka listener container factory concurrent kafka listener container factory.
+     *
+     * @return the concurrent kafka listener container factory
+     */
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, PersonAvro> personAvroKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, PersonAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
@@ -52,6 +56,11 @@ public class KafkaConsumerConfig {
     }
 
 
+    /**
+     * Order avro kafka listener container factory concurrent kafka listener container factory.
+     *
+     * @return the concurrent kafka listener container factory
+     */
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Order> orderAvroKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Order> factory = new ConcurrentKafkaListenerContainerFactory<>();
@@ -60,6 +69,12 @@ public class KafkaConsumerConfig {
     }
 
 
+    /**
+     * Avro consumer factory consumer factory.
+     *
+     * @param <T> the type parameter
+     * @return the consumer factory
+     */
     @Bean
     public <T> ConsumerFactory<String, Object> avroConsumerFactory() {
         Map<String, Object> consumerProperties = new HashMap<>();
@@ -75,6 +90,11 @@ public class KafkaConsumerConfig {
     }
 
 
+    /**
+     * String consumer properties map.
+     *
+     * @return the map
+     */
     @Bean
     Map<String, Object> stringConsumerProperties() {
         Map<String, Object> consumerProperties = new HashMap<>();
@@ -85,6 +105,11 @@ public class KafkaConsumerConfig {
         return consumerProperties;
     }
 
+    /**
+     * String kafka listener container factory kafka listener container factory.
+     *
+     * @return the kafka listener container factory
+     */
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> stringKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory
@@ -93,12 +118,22 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
+    /**
+     * String consumer factory consumer factory.
+     *
+     * @return the consumer factory
+     */
     @Bean
     public ConsumerFactory<String, String> stringConsumerFactory() {
         return new DefaultKafkaConsumerFactory<>(stringConsumerProperties());
     }
 
 
+    /**
+     * Json kafka listener container factory kafka listener container factory.
+     *
+     * @return the kafka listener container factory
+     */
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> jsonKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Object> factory =
@@ -107,12 +142,22 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
+    /**
+     * Consumer factory consumer factory.
+     *
+     * @return the consumer factory
+     */
     @Bean
     public ConsumerFactory<String, Object> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(jsonConsumerProperties());
     }
 
 
+    /**
+     * Json consumer properties map.
+     *
+     * @return the map
+     */
     @Bean
     Map<String, Object> jsonConsumerProperties() {
         Map<String, Object> consumerProperties = new HashMap<>();
