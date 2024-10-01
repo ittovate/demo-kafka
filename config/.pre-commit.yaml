@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+
+  - repo: local
+    hooks:
+      - id: mvn-checkstyle
+        name: Maven Checkstyle
+        entry: mvn checkstyle:check
+        language: system
+        types: [ java ]
+        pass_filenames: false
+      - id: maven-test
+        name: Maven Test
+        entry: mvn test
+        language: system
+        pass_filenames: false

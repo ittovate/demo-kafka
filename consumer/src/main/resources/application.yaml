@@ -1,4 +1,3 @@
-
 spring:
   application:
     name: kafka-demo
@@ -19,6 +18,10 @@ spring:
         person-topic : person-topic
         String-topic : string-topic
         Json-topic : json-topic
+  json:
+    trusted:
+      packages:
+        "*"
 
 
 
